@@ -30,6 +30,10 @@
 body{
   background-image : url("https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/1689558/original/Imagem28/put-your-face-in-a-game-like-pacman.jpg")
 }
+
+div {
+  width: 580px;
+}
 </style>
 
   
@@ -40,16 +44,16 @@ body{
 </head>
 
 <body translate="no" >
-  <audio controls id="smack">
+  <audio controls id="smack" class="hide">
   <source src="https://math.seattleacademy.org/garyanderson/snd/smack.wav">
 </audio>
 
-<audio controls id="ugh">
+<audio controls id="ugh" class="hide">
   <source src="https://math.seattleacademy.org/garyanderson/snd/ugh.wav">
 </audio>
 
-<div>
-  Bot Count: <span id="botCount">0</span> Deaths: <span id="deaths">0</span> time: <span id="theTime">0</span>
+<div style="background-color:tomato">
+  Bot Count: <span id="botCount">0</span> Deaths <span id="deaths">0</span> time: <span id="theTime">0</span>
   <button id="resetBots">Reset Bots</button>
 </div>
 <canvas id="myCanvas" width="600" height="300"></canvas>
@@ -58,7 +62,7 @@ body{
 
 <img id="redghost" class="hide" src="https://i.pinimg.com/originals/90/d2/e3/90d2e3ff2856032d36fcc7dc49334191.png"/>
 
-<img id="maze" class="hide" src="https://hoardingwoes.files.wordpress.com/2011/08/maze.jpg"/>
+<img id="maze" class="hide" src="https://zoe-khan.github.io/2128-5/img/maze(2).png"/>
   
   
       <script id="rendered-js" >
@@ -131,8 +135,8 @@ function drawBot(bot) {
 
 function moveBot(bot) {
   timer = timer + 1;
-    let theTime = document.getElementById("theTime");
-  theTime.innerHTML = timer;
+  document.getElementById("theTime").textContent = (timer/10).toFixed(1);
+ //theTime.innerHTML = timer;
   
   bot.x = bot.x + bot.dx;
   bot.y = bot.y - bot.dy;
@@ -219,7 +223,7 @@ function dokeydown(e) {
   }
 
   if (e.key == "ArrowDown") {
-    bots[0].dy = bots[0].dy + stepSize;
+    bots[0].dy = bots[0].dy - stepSize;
         e.stopPropagation();
 
   }
